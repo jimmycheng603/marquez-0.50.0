@@ -42,3 +42,6 @@ chart/charts/
 
 # Dev
 changes.txt
+
+.vscode
+.idea
