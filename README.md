@@ -18,9 +18,9 @@
 
 ## 1. Web UI 优化亮点
 
-![优化后的 Web UI 界面](newflow.jpg)
+![优化后的 Web UI 界面](./newflow.jpg)
 
-![优化后的 Web UI 界面](newdataset.jpg)
+![优化后的 Web UI 界面](./newdataset.jpg)
 
 *优化后的 Marquez Web UI 界面，展示了增强的血缘图谱可视化效果和灵活的过滤功能(新增 Show Jobs 和 Show Datasets 过滤)*
 
@@ -85,67 +85,6 @@ java -version
 brew install postgresql@14
 brew services start postgresql@14
 ```
-
-<<<<<<< HEAD
-> **Tip:** Use the `--build` flag to build images from source, and/or `--seed` to start Marquez with sample lineage metadata. For a more complete example using the sample metadata, please follow our [quickstart](https://marquezproject.github.io/marquez/quickstart.html) guide.
-
-> **Note:** Port 5000 is now reserved for MacOS. If running locally on MacOS, you can run `./docker/up.sh --api-port 9000` to configure the API to listen on port 9000 instead. Keep in mind that you will need to update the URLs below with the appropriate port number.
-
-**`WEB UI`**
-
-You can open [http://localhost:3000](http://localhost:3000) to begin exploring the Marquez Web UI. The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run metadata of current and previous job runs, and much more!
-
-<p align="center">
-  <img src="./web/docs/demo.gif">
-</p>
-
-**`HTTP API`**
-
-The Marquez [HTTP API](https://marquezproject.github.io/marquez/openapi.html) listens on port `5000` for all calls and port `5001` for the admin interface. The admin interface exposes helpful endpoints like `/healthcheck` and `/metrics`. To verify the HTTP API server is running and listening on `localhost`, browse to [http://localhost:5001](http://localhost:5001). To begin collecting lineage metadata as OpenLineage events, use the [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage/paths/~1lineage/post) or an OpenLineage [integration](https://openlineage.io/docs/integrations/about).
-
-> **Note:** By default, the HTTP API does not require any form of authentication or authorization.
-
-**`GRAPHQL`**
-
-To explore metadata via graphql, browse to [http://localhost:5000/graphql-playground](http://localhost:5000/graphql-playground). The graphql endpoint is currently in _beta_ and is located at [http://localhost:5000/api/v1-beta/graphql](http://localhost:5000/api/v1-beta/graphql).
-
-## Documentation
-
-We invite everyone to help us improve and keep documentation up to date. Documentation is maintained in this repository and can be found under [`docs/`](https://github.com/MarquezProject/marquez/tree/main/docs).
-
-> **Note:** To begin collecting metadata with Marquez, follow our [quickstart](https://marquezproject.github.io/marquez/quickstart.html) guide. Below you will find the steps to get up and running from source.
-
-## Versions and OpenLineage Compatibility
-
-Versions of Marquez are compatible with OpenLineage unless noted otherwise. We ensure backward compatibility with a newer version of Marquez by recording events with an older OpenLineage specification version. **We strongly recommend understanding how the OpenLineage specification is** [versioned](https://github.com/OpenLineage/OpenLineage/blob/main/spec/Versioning.md) **and published**.
-
-| **Marquez**                                                                                      | **OpenLineage**                                               | **Status**    |
-|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------|---------------|
-| [`UNRELEASED`](https://github.com/MarquezProject/marquez/blob/main/CHANGELOG.md#unreleased)      | [`2-0-2`](https://openlineage.io/spec/2-0-2/OpenLineage.json) | `CURRENT`     |
-| [`0.50.0`](https://github.com/MarquezProject/marquez/blob/main/CHANGELOG.md#0500---2024-10-23)   | [`2-0-2`](https://openlineage.io/spec/2-0-2/OpenLineage.json) | `RECOMMENDED` |
-| [`0.49.0`](https://github.com/MarquezProject/marquez/blob/0.49.0/CHANGELOG.md#0490---2024-08-07) | [`2-0-2`](https://openlineage.io/spec/2-0-2/OpenLineage.json) | `MAINTENANCE` |
-
-> **Note:** The [`openlineage-python`](https://pypi.org/project/openlineage-python) and [`openlineage-java`](https://central.sonatype.com/artifact/io.openlineage/openlineage-java) libraries will a higher version than the OpenLineage [specification](https://github.com/OpenLineage/OpenLineage/tree/main/spec) as they have different version requirements.
-
-We currently maintain three categories of compatibility: `CURRENT`, `RECOMMENDED`, and `MAINTENANCE`. When a new version of Marquez is released, it's marked as `RECOMMENDED`, while the previous version enters `MAINTENANCE` mode (which gets bug fixes whenever possible). The unreleased version of Marquez is marked `CURRENT` and does not come with any guarantees, but is assumed to remain compatible with OpenLineage, although surprises happen and there maybe rare exceptions.
-
-## Modules
-
-Marquez uses a _multi_-project structure and contains the following modules:
-
-* [`api`](https://github.com/MarquezProject/marquez/tree/main/api): core API used to collect metadata
-* [`web`](https://github.com/MarquezProject/marquez/tree/main/web): web UI used to view metadata
-* [`clients`](https://github.com/MarquezProject/marquez/tree/main/clients): clients that implement the HTTP [API](https://marquezproject.github.io/marquez/openapi.html)
-* [`chart`](https://github.com/MarquezProject/marquez/tree/main/chart): helm chart
-
-> **Note:** The `integrations` module was removed in [`0.21.0`](https://github.com/MarquezProject/marquez/blob/main/CHANGELOG.md#removed), so please use an OpenLineage [integration](https://openlineage.io/integration) to collect lineage events easily.
-
-## Requirements
-
-* [Java 17](https://adoptium.net)
-* [PostgreSQL 14](https://www.postgresql.org/download)
-
-> **Note:** To connect to your running PostgreSQL instance, you will need the standard [`psql`](https://www.postgresql.org/docs/9.6/app-psql.html) tool.
 
 **注意**：Homebrew 默认安装的本地 PostgreSQL 使用 macOS 当前用户名作为数据库用户，默认没有密码（trust/peer 认证）。初次连接可直接使用 `psql postgres`。
 
